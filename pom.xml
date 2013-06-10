@@ -3,7 +3,7 @@
 
 	<groupId>ru.apache_maven</groupId>
 	<artifactId>test_mvn_project1</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>test_mvn_project1</name>
@@ -27,7 +27,7 @@
 	<scm>
 		<connection>scm:git:git://github.com/smilart-sebyakina-n-a/test_mvn_project1.git</connection>
 		<developerConnection>scm:git:git@github.com:smilart-sebyakina-n-a/test_mvn_project1.git</developerConnection>
-		<tag>test_mvn_project1</tag>
+		<tag>test_mvn_project1-0.0.1</tag>
 		<url>http://github.com/smilart-sebyakina-n-a/test_mvn_project1</url>
 	</scm>
 
