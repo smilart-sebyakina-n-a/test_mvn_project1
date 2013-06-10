@@ -2,24 +2,93 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>ru.apache_maven</groupId>
-  <artifactId>test_mvn_project1</artifactId>
-  <version>1.0</version>
-  <packaging>jar</packaging>
+	<groupId>ru.apache_maven</groupId>
+	<artifactId>test_mvn_project1</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
-  <name>test_mvn_project1</name>
-  <url>http://maven.apache.org</url>
+	<name>test_mvn_project1</name>
+	<url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+	<properties>
+        <deploy.url>${release.url}</deploy.url>
+        <deploy.repo>releases.archiva.smilart.com</deploy.repo>
+        <snapshots.repo>snapshots.archiva.smilart.com</snapshots.repo>
+   	</properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<scm>
+		<connection>scm:git:ssh://github.com/smilart-sebyakina-n-a/test_mvn_project1.git</connection>
+		<developerConnection>scm:git:ssh@github.com:smilart-sebyakina-n-a/test_mvn_project1.git</developerConnection>
+		<tag>HEAD</tag>
+		<url>http://github.com/smilart-sebyakina-n-a/test_mvn_project1</url>
+	</scm>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-changelog-plugin</artifactId>
+					<version>2.9</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		
+		<plugins>
+			<!-- plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-changelog-plugin</artifactId>
+			</plugin-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.3.1</version>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- reporting>
+		<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-changelog-plugin</artifactId>
+					<reportSets>
+						<reportSet>
+							<id>dual-report</id>
+							<configuration>
+								<type>range</type>
+								<range>30</range>
+							</configuration>
+							<reports>
+								<report>changelog</report>
+								<report>file-activity</report>
+							</reports>
+						</reportSet>
+					</reportSets>
+				</plugin>
+		</plugins>
+	</reporting-->
+
+	<distributionManagement>
+		<repository>
+			<id>${deploy.repo}</id>
+			<name>Internal Release Repository</name>
+			<url>${deploy.url}</url>
+		</repository>
+
+		<snapshotRepository>
+			<id>${snapshots.repo}</id>
+			<name>Internal Snapshot Repository</name>
+			<url>${snapshots.url}</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>
